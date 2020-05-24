@@ -8,10 +8,16 @@ keep file in same folder as code
 
 Replace file name in line 25 `client_secrets_file`
 
-Get your playlist id 
+Get your destination playlist id 
 https://www.youtube.com/playlist?list=[PLAYLIST_ID]
 
-replace it in `playlistId`
+replace it in `destination_play_list`
+
+###### **optional**
+
+By default source playlist is Youtube Music Liked music playlist
+
+If you need to change that then replace `source_play_list` default value being `LM`
 
 Use Python>3.6
 

@@ -23,13 +23,15 @@ def main():
     api_version = "v3"
     # How to create cred https://stackoverflow.com/a/52222827/2138792
     client_secrets_file = "client_secret_866116146487-aftoa9qtv3taf2vdqu7ovqdh1an33fdh.apps.googleusercontent.com.json"
-    playlistId = 'PLozlHB3ta93E7zSsknIEBNpYd_FhQXCbE'
+    destination_play_list = 'PLozlHB3ta93E7zSsknIEBNpYd_FhQXCbE'
+    source_play_list = 'LM'  # Replace if not using liked music
     # Get credentials and create an API client
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
         client_secrets_file, scopes)
     credentials = flow.run_console()
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, credentials=credentials)
+
     def getplaylistvids(pid):
         request = youtube.playlistItems().list(
             part='contentDetails',
@@ -76,9 +78,10 @@ def main():
             else:
                 break
         return vids
-    myvids = getplaylistvids('LM')
-    playlistvid = getplaylistvids(playlistId)
-    vids = set(myvids)-set(playlistvid)
+
+    source_vids = getplaylistvids(source_play_list)
+    destination_vids = getplaylistvids(destination_play_list)
+    vids = set(source_vids) - set(destination_vids)
     print(vids)
     for vid in vids:
         try:
