@@ -10,7 +10,7 @@ Replace file name in lin 25
 Get your playlist id 
 https://www.youtube.com/playlist?list=[PLAYLIST_ID]
 
-replace it in playlistId
+replace it in `playlistId`
 
 Use Python>3.6
 
