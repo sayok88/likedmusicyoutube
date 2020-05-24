@@ -5,7 +5,7 @@ Create your youtube credentials following
 https://stackoverflow.com/a/52222827/2138792
 
 keep file in same folder as code
-Replace file name in lin 25
+Replace file name in line 25 `client_secrets_file`
 
 Get your playlist id 
 https://www.youtube.com/playlist?list=[PLAYLIST_ID]
