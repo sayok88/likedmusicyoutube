@@ -15,9 +15,9 @@ replace it in `destination_play_list`
 
 ###### **optional**
 
-By default source playlist is Youtube Music Liked music playlist
+###### By default source playlist is Youtube Music Liked music playlist
 
-If you need to change that then replace `source_play_list` default value being `LM`
+###### If you need to change that then replace `source_play_list` default value being `LM`
 
 Use Python>3.6
 
@@ -26,5 +26,7 @@ Use venv or not
 install requirements.txt
 
 ` pip3 install -r requirements.txt`
+
+Run
 
 `python3 main.py`
