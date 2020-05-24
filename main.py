@@ -79,6 +79,7 @@ def main():
     myvids = getplaylistvids('LM')
     playlistvid = getplaylistvids(playlistId)
     vids = set(myvids)-set(playlistvid)
+    print(vids)
     for vid in vids:
         try:
             request = youtube.playlistItems().insert(
