@@ -27,8 +27,13 @@ def main():
     source_play_list = 'LM'  # Replace if not using liked music
     # Get credentials and create an API client
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-        client_secrets_file, scopes)
-    credentials = flow.run_console()
+        client_secrets_file, scopes,redirect_uri='urn:ietf:wg:oauth:2.0:oob')
+    # credentials = flow.run_local_server()
+    auth_url, _ = flow.authorization_url(prompt='consent')
+    print(auth_url)
+    code = input('Enter the authorization code: ')
+    flow.fetch_token(code=code)
+    credentials=flow.credentials
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, credentials=credentials)
 
@@ -89,7 +94,7 @@ def main():
                 part="snippet",
                 body={
                     "snippet": {
-                        "playlistId": "",
+                        "playlistId": destination_play_list,
                         "resourceId": {
                             "videoId": vid,
                             "kind": "youtube#video"
