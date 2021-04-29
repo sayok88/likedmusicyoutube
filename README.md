@@ -30,4 +30,4 @@ keep file in same folder as code
 
 
 ## Note
-The YouTube-API has a request-limit, so it worked for "only" ~200 Songs
+The YouTube-API has a request-limit, so it workes for "only" ~200 Songs per day.
