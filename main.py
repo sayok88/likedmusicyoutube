@@ -33,8 +33,13 @@ def main():
     api_service_name = "youtube"
     api_version = "v3"
     # How to create cred https://stackoverflow.com/a/52222827/2138792
+<<<<<<< HEAD
     client_secrets_file = get_client_secrets_file()
     destination_play_list = get_dest_playlist()
+=======
+    client_secrets_file = "client_secret_678424978322-bbrt9776bau09pkrk2ktujb5gd2c77b6.apps.googleusercontent.com.json"
+    destination_play_list = 'PLy907-qFs4c-xzTI-5KHGrNTiRdyWKRA3'
+>>>>>>> bd2531f9ba9cd66b5e480b69d57f8f40c173b26b
     source_play_list = 'LM'  # Replace if not using liked music
     # Get credentials and create an API client
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
