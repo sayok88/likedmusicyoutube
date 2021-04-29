@@ -23,12 +23,13 @@ replace it in `destination_play_list`
 
 Use Python>=3.6
 
-Use venv or not
-
-install requirements.txt
 
 ` pip3 install -r requirements.txt`
 
 Run
 
 `python3 main.py`
+
+
+## Note
+The YouTube-API has a request-limit, so it worked for "only" ~200 Songs
