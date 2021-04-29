@@ -6,12 +6,23 @@
 
 import os
 from time import sleep
+import configparser
+
 
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
 
 scopes = ["https://www.googleapis.com/auth/youtube.force-ssl"]
+config = configparser.ConfigParser()
+def get_client_secrets_file():
+    config.read('config.ini')
+    return config["MAIN"]["CLIENT_SECRET_FILE"]
+
+def get_dest_playlist():
+    config.read("config.ini")
+    return config["MAIN"]["DEST_PLAYLIST"].replace("https://www.youtube.com/playlist?list=", "")
+
 
 
 def main():
@@ -22,8 +33,8 @@ def main():
     api_service_name = "youtube"
     api_version = "v3"
     # How to create cred https://stackoverflow.com/a/52222827/2138792
-    client_secrets_file = "client_secret_866116146487-aftoa9qtv3taf2vdqu7ovqdh1an33fdh.apps.googleusercontent.com.json"
-    destination_play_list = 'PLozlHB3ta93E7zSsknIEBNpYd_FhQXCbE'
+    client_secrets_file = get_client_secrets_file()
+    destination_play_list = get_dest_playlist()
     source_play_list = 'LM'  # Replace if not using liked music
     # Get credentials and create an API client
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
@@ -56,7 +67,7 @@ def main():
         response = request.execute()
         print(response)
         vids = []
-        nextPageToken = response['nextPageToken']
+
         if 'items' in response:
             items = response['items']
             for item in items:
@@ -64,12 +75,19 @@ def main():
                     vids.append(item['contentDetails']['videoId'])
         while len(vids) < maxResults:
             sleep(1)
-            request = youtube.playlistItems().list(
-                part='contentDetails',
-                playlistId=pid,
-                maxResults=50,
-                pageToken=nextPageToken
-            )
+            if 'nextPageToken' in response:
+                request = youtube.playlistItems().list(
+                    part='contentDetails',
+                    playlistId=pid,
+                    maxResults=50,
+                    pageToken= response['nextPageToken'],
+                )
+            else:
+                request = youtube.playlistItems().list(
+                    part='contentDetails',
+                    playlistId=pid,
+                    maxResults=50,
+                )
             response = request.execute()
             print(response)
 
