@@ -1,6 +1,8 @@
 # Transfer your liked youtube music playlist to other playlist
 Copy your liked youtube music to a playlist
 
+
+#
 Create your youtube credentials following(use option Desktop)
 https://stackoverflow.com/a/52222827/2138792
 
@@ -8,27 +10,23 @@ Also enable youtube data api v3 on https://console.developers.google.com/
 
 keep file in same folder as code
 
-Replace file name in line 25 `client_secrets_file`
-
-Get your destination playlist id 
-https://www.youtube.com/playlist?list=[PLAYLIST_ID]
-
-replace it in `destination_play_list`
-
-###### **optional**
-
-###### By default source playlist is Youtube Music Liked music playlist
-
-###### If you need to change that then replace `source_play_list` default value being `LM`
-
-Use Python>=3.6
 
 
-` pip3 install -r requirements.txt`
+# Get started
+1. run `git clone https://github.com/mawoka-myblock/likedmusicyoutube.git`
 
-Run
+2. [Create your YouTube credentials (use option Desktop)](https://stackoverflow.com/a/52222827/2138792) (It is a link to Stackoverflow where it gets explained in detail)
 
-`python3 main.py`
+3. enable YouTube data api v3 on https://console.developers.google.com/
+4. Download the file in the same folder as the code.
+
+5. Open `config.ini` and edit it for your needs. 
+    - `CLIENT_SECRET_FILE` is the name of the file you downloaded from step 2
+    - `DEST_PLAYLIST` is the playlist the script will put your liked songs
+
+6. run `pip3 install -r requirements.txt`
+
+7. Lastly, run `python3 main.py`
 
 
 ## Note
