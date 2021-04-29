@@ -6,7 +6,6 @@
 
 import os
 from time import sleep
-from icecream import ic
 from contextlib import suppress
 
 import google_auth_oauthlib.flow
