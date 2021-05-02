@@ -60,7 +60,7 @@ def main():
         request = youtube.playlistItems().list(
             part='contentDetails',
             playlistId=pid,
-            maxResults=50  if maxResults > 50 else maxResults
+            maxResults=50 if maxResults > 50 else maxResults
         )
         response = request.execute()
         print(response)
