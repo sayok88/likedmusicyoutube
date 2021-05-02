@@ -3,7 +3,7 @@ Copy your liked YouTube Music to a playlist
 
 
 # Get started
-1. Run `git clone https://github.com/mawoka-myblock/likedmusicyoutube.git`
+1. Run `git clone https://github.com/mathe8/likedmusicyoutube.git`
 
 2. Google Cloud Configuration
 
