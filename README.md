@@ -4,7 +4,7 @@ Copy your liked YouTube Music to a playlist
 Tested with Python>=3.8 and >=3.9
 
 # Get started
-1. Run `git clone https://github.com/mathe8/likedmusicyoutube.git`
+1. Run `git clone https://github.com/sayok88/likedmusicyoutube.git`
 
 2. Google Cloud Configuration
 
