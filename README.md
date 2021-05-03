@@ -1,6 +1,7 @@
 # Transfer your liked YouTube Music playlist to other playlist
 Copy your liked YouTube Music to a playlist
 
+Tested with Python>=3.8 and >=3.9
 
 # Get started
 1. Run `git clone https://github.com/mathe8/likedmusicyoutube.git`
@@ -33,3 +34,8 @@ Copy your liked YouTube Music to a playlist
 The YouTube-API has a request-limit, so it workes for "only" ~200 Songs per day
 
 The export process of the txt file is not impacted by the YouTube API request limit
+
+###### Optional
+
+By default source playlist is Youtube Music Liked playlist  
+If you need to change that then replace source_play_list default value being `LM`
