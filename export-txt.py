@@ -19,11 +19,8 @@ def get_client_secrets_file():
     config.read('config.ini')
     return config["MAIN"]["CLIENT_SECRET_FILE"]
 
-def get_dest_playlist():
-    config.read("config.ini")
-    return config["MAIN"]["DEST_PLAYLIST"].replace("https://www.youtube.com/playlist?list=", "")
+def main():      
 
-def main():
     # Disable OAuthlib's HTTPS verification when running locally.
     # *DO NOT* leave this option enabled in production.
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
@@ -32,7 +29,6 @@ def main():
     api_version = "v3"
     # How to create cred https://stackoverflow.com/a/52222827/2138792
     client_secrets_file = get_client_secrets_file()
-    destination_play_list = get_dest_playlist()
     source_play_list = 'LM'  # Replace if not using liked music
     # Get credentials and create an API client
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
@@ -60,7 +56,7 @@ def main():
         request = youtube.playlistItems().list(
             part='contentDetails',
             playlistId=pid,
-            maxResults=50 if maxResults > 50 else maxResults
+            maxResults=50  if maxResults > 50 else maxResults
         )
         response = request.execute()
         print(response)
@@ -101,28 +97,13 @@ def main():
         return vids
 
     source_vids = getplaylistvids(source_play_list)
-    destination_vids = getplaylistvids(destination_play_list)
-    vids = set(source_vids) - set(destination_vids)
+    vids = set(source_vids)
     print(vids)
+    
+    f = open("playlist.txt", "w+")
     for vid in vids:
-        try:
-            request = youtube.playlistItems().insert(
-                part="snippet",
-                body={
-                    "snippet": {
-                        "playlistId": destination_play_list,
-                        "resourceId": {
-                            "videoId": vid,
-                            "kind": "youtube#video"
-                        }
-                    }
-                }
-            )
-            response = request.execute()
-            print(response)
-            sleep(1)
-        except Exception as e:
-            print(e)
+        f.write("https://www.youtube.com/watch?v="+vid+"\n");
+    f.close()   
 
 if __name__ == "__main__":
     main()
