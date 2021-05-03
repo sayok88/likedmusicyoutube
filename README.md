@@ -37,5 +37,7 @@ The export process of the txt file is not impacted by the YouTube API request li
 
 ###### Optional
 
+Use venv or not
+
 By default source playlist is Youtube Music Liked playlist  
 If you need to change that then replace source_play_list default value being `LM`
